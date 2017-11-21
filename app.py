@@ -15,7 +15,7 @@ def list_users():
         a_dict = {}
         a_dict['username'] = row[0]
         a_dict['name'] = row[1]
-        a_dict['emai'] = row[2]
+        a_dict['email'] = row[2]
         a_dict['password'] = row[3]
         a_dict['id'] = row[4]
         api_list.append(a_dict)
