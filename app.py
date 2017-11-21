@@ -97,7 +97,7 @@ def create_user():
     user = {
         'username': request.json['username'],
         'email': request.json['email'],
-        'name': request.json['name', ""],
+        'name': request.json['name'],
         'password': request.json['password'],
     }
     return jsonify({'status': add_user(user)}), 201
