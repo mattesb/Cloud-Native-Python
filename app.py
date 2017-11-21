@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, make_response
 import json
 import sqlite3
 
@@ -37,8 +37,8 @@ def list_user(user_id):
         user['password'] = data[0][3]
         user['id'] = data[0][4]
     conn.close()
-    return jsonify(user), 200
-    
+    return jsonify(user)
+
 
 @app.route("/api/v1/info")
 def home_index():
@@ -69,6 +69,10 @@ def get_users():
 def get_user(user_id):
     return list_user(user_id)
 
+
+@app.errorhandler(404)
+def resource_not_found(error):
+    return make_response(jsonify({'error': 'Resource not found!'}), 404)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)
